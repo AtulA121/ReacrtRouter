@@ -1,5 +1,7 @@
 import React from "react";
-import axios from "axios";
+import data from "../services/constants";
+import Service from "../services/service";
+import HttpService from "../services/httpservice";
 import { Redirect } from 'react-router'
 // import { useHistory } from "react-router-dom";
 
@@ -12,32 +14,38 @@ export default class Greet extends React.Component{
             result : []
         };
         // this.history = withRouter();
+        this.service=Service.getInstance();
+        this.httpService=HttpService.getInstance();
         this.shoot();
     }
 
-    shoot(){
-        axios.get("http://localhost:3300/getEventData").then(res=>{
-            console.log("data is : ",res.data);
-            let obj={
-                userName : "a121",
-                result : res.data.result
-            }
-            this.setState(obj);
+    async shoot(){
+        // axios.get(data.url).then(res=>{
+        //     console.log("data is : ",res.data);
+        //     let obj={
+        //         userName : "a121",
+        //         result : res.data.result
+        //     }
+        //     this.setState(obj);
+        // }).catch(err=>{
+        //     console.log(err);
+        // });
 
-        }).catch(err=>{
-            console.log(err);
-        });
+        let res=await this.httpService.httpGetRequest(data.url);
+        let obj={
+            userName : "a121",
+            result : res.data.result
+        }
+        this.setState(obj);
     }
 
     navigate(id){
-        console.log("asda",id);
         // let history = useHistory();
         // history.push("/home");
         return <Redirect push to="/somewhere/else" />
     }
 
     render(){
-        console.log(this.state.result);
         let list=this.state.result.map((key,index)=>{
             return (
                     <tr key={key._id}>
@@ -47,13 +55,7 @@ export default class Greet extends React.Component{
                 )
         });
 
-        return (
-            <div>
-                <table className="table">
-                    <tbody>{list}</tbody>
-                </table>
-            </div>
-        );
+        return this.service.getTable(list);
 
         // return (
         //     <span onClick={this.shoot}>Hello... {this.state.userName}</span>
