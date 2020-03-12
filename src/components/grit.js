@@ -30,7 +30,7 @@ export default class Greet extends React.Component{
     }
 
     navigate(id){
-        console.log("asda");
+        console.log("asda",id);
         // let history = useHistory();
         // history.push("/home");
         return <Redirect push to="/somewhere/else" />
@@ -41,8 +41,8 @@ export default class Greet extends React.Component{
         let list=this.state.result.map((key,index)=>{
             return (
                     <tr key={key._id}>
-                        <th scope="col" onClick={this.navigate}>{key._id}</th>
-                        <th scope="col" onClick={this.navigate}>{key.userName}</th>
+                        <th scope="col" value={key._id} onClick={()=>this.navigate(key._id)}>{key._id}</th>
+                        <th scope="col" value={key._id} onClick={()=>this.navigate(key._id)}>{key.userName}</th>
                     </tr>
                 )
         });
