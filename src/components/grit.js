@@ -41,7 +41,7 @@ export default class Greet extends React.Component{
         let list=this.state.result.map((key,index)=>{
             return (
                     <tr key={key._id}>
-                        <th scope="col" value={key._id} onClick={()=>this.navigate(key._id)}>{key._id}</th>
+                        <th scope="col" value={key._id} onClick={()=>this.navigate(key._id)}>{key.game}</th>
                         <th scope="col" value={key._id} onClick={()=>this.navigate(key._id)}>{key.userName}</th>
                     </tr>
                 )
