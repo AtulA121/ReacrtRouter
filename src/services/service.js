@@ -6,6 +6,13 @@ export default class Service extends React.Component{
         this.serviceService=undefined;
     }
 
+    static getInstance(){
+        if(this.serviceService === undefined){
+            this.serviceService=new Service();
+        }
+        return this.serviceService;
+    }
+
     getTable(list){
         return (
             <div>
@@ -14,13 +21,6 @@ export default class Service extends React.Component{
                 </table>
             </div>
         );
-    }
-
-    static getInstance(){
-        if(this.serviceService === undefined){
-            this.serviceService=new Service();
-        }
-        return this.serviceService;
     }
 
 }

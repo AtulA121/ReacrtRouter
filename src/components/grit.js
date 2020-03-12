@@ -2,6 +2,7 @@ import React from "react";
 import data from "../services/constants";
 import Service from "../services/service";
 import HttpService from "../services/httpservice";
+import getData from "../services/common";
 import { Redirect } from 'react-router'
 // import { useHistory } from "react-router-dom";
 
@@ -30,7 +31,7 @@ export default class Greet extends React.Component{
         // }).catch(err=>{
         //     console.log(err);
         // });
-
+        getData();
         let res=await this.httpService.httpGetRequest(data.url);
         let obj={
             userName : "a121",
@@ -51,6 +52,7 @@ export default class Greet extends React.Component{
                     <tr key={key._id}>
                         <th scope="col" value={key._id} onClick={()=>this.navigate(key._id)}>{key.game}</th>
                         <th scope="col" value={key._id} onClick={()=>this.navigate(key._id)}>{key.userName}</th>
+                        <th scope="col" value={key._id} onClick={()=>this.navigate(key._id)}>{key.discription}</th>
                     </tr>
                 )
         });
