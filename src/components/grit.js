@@ -3,7 +3,6 @@ import data from "../services/constants";
 import Service from "../services/service";
 import HttpService from "../services/httpservice";
 import getData from "../services/common";
-import { Redirect } from 'react-router'
 // import { useHistory } from "react-router-dom";
 
 export default class Greet extends React.Component{
@@ -40,22 +39,15 @@ export default class Greet extends React.Component{
         this.setState(obj);
     }
 
-    navigate(id){
-        // let history = useHistory();
-        // history.push("/home");
-        return <Redirect push to="/somewhere/else" />
+    static navigate(id){
+        console.log("Grit : ",id);
     }
 
     render(){
-        let list=this.state.result.map((key,index)=>{
-            return (
-                    <tr key={key._id}>
-                        <th scope="col" value={key._id} onClick={()=>this.navigate(key._id)}>{key.game}</th>
-                        <th scope="col" value={key._id} onClick={()=>this.navigate(key._id)}>{key.userName}</th>
-                        <th scope="col" value={key._id} onClick={()=>this.navigate(key._id)}>{key.discription}</th>
-                    </tr>
-                )
-        });
+        let list=[];
+        let header=this.service.getHeaderOfTable(Greet,this.service.getData());
+        list.push(header);
+        list.push(this.service.getBodyOfTable(Greet,this.state.result));
 
         return this.service.getTable(list);
 
