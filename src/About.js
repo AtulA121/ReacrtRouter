@@ -15,6 +15,9 @@ export default class About extends React.Component {
       // this.history = withRouter();
       this.service=Service.getInstance();
       this.httpService=HttpService.getInstance();
+   }
+
+   componentDidMount(){
       this.shoot();
    }
 

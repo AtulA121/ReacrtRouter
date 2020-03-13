@@ -14,6 +14,9 @@ export default class Greet extends React.Component{
         };
         this.service=Service.getInstance();
         this.httpService=HttpService.getInstance();
+    }
+
+    componentDidMount(){
         this.shoot();
     }
 
