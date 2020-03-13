@@ -32,11 +32,7 @@ export default class Greet extends React.Component{
         // });
         getData();
         let res=await this.httpService.httpGetRequest(data.url);
-        let obj={
-            userName : "a121",
-            result : res.data.result
-        }
-        this.setState(obj);
+        this.setState({result : res.data.result});
     }
 
     static navigate(id){
