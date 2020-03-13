@@ -4,7 +4,7 @@ import Service from "./services/service";
 import HttpService from "./services/httpservice";
 import getData from "./services/common";
 
-class About extends React.Component {
+export default class About extends React.Component {
 
    constructor(){
       super();
@@ -36,4 +36,3 @@ class About extends React.Component {
       return this.service.getTable(list);
    }
 }
-export default About;
