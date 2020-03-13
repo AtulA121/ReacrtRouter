@@ -5,7 +5,6 @@ import HttpService from "../services/httpservice";
 import getData from "../services/common";
 
 export default class Greet extends React.Component{
-    // let history;
     constructor(){
         super();
         this.state={
