@@ -31,12 +31,12 @@ class About extends React.Component {
    static navigate(id){
       console.log("About : ",id);
    }
+
    render() {
       let list=[];
       let header=this.service.getHeaderOfTable(About,this.service.getData());
       list.push(header);
       list.push(this.service.getBodyOfTable(About,this.state.result));
-      
       return this.service.getTable(list);
    }
 }
