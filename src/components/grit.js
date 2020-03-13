@@ -48,7 +48,6 @@ export default class Greet extends React.Component{
         let header=this.service.getHeaderOfTable(Greet,this.service.getData());
         list.push(header);
         list.push(this.service.getBodyOfTable(Greet,this.state.result));
-
         return this.service.getTable(list);
 
         // return (
