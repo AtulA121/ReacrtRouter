@@ -6,7 +6,6 @@ import * as serviceWorker from './serviceWorker';
 import Interceptor from "./services/indeterceptor";
 
 Interceptor.intercept();
-console.log("interceptor added : ");
 
 ReactDOM.render(<App />, document.getElementById('root'));
 
