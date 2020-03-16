@@ -3,14 +3,10 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
-import axios from "axios";
+import Interceptor from "./services/indeterceptor";
 
-//request interceptor
-axios.interceptors.request.use(request=>{
-   //add logic here on the coming request
-   console.log("intercept every request : ",request.url);
-   return request;
-});
+Interceptor.intercept();
+console.log("interceptor added : ");
 
 ReactDOM.render(<App />, document.getElementById('root'));
 
