@@ -2,16 +2,20 @@ import socketIOClient from "socket.io-client";
 
 export default class WebSocekt{
     
-    static socket=undefined;
+    static socket : any=undefined;
+    
+    private constructor(){
+        // socket=undefined;
+    }
 
-    public static async getInstance(url){
+    public static async getInstance(url : any){
         if(this.socket===undefined){
             await this.connect(url);
         }
         return this.socket;
     }
 
-    private static async connect(url){
+    private static async connect(url : any){
         console.log("connecting to socket : ");
         this.socket = socketIOClient(url);
         this.onOpen(this.socket);
@@ -19,25 +23,25 @@ export default class WebSocekt{
         this.onMessage(this.socket);
     }
 
-    private static onOpen(socketIO){
-        socketIO.on("open",(data)=>{
+    private static onOpen(socketIO : any){
+        socketIO.on("open",(data : any)=>{
             console.log("connection opened : ");
         });
     }
 
-    private static onClose(socketIO){
-        socketIO.on("disconnect",(data)=>{
+    private static onClose(socketIO : any){
+        socketIO.on("disconnect",(data : any)=>{
             console.log("connection closed : ");
         });
     }
 
-    private static onMessage(socketIO){
-        socketIO.on("message",(data)=>{
+    private static onMessage(socketIO : any){
+        socketIO.on("message",(data : any)=>{
             console.log("socket message : ");
         });
     }
 
-    public static sendMessage(obj){
+    public static sendMessage(obj : any){
         this.socket.emit("message",obj);
     }
 
