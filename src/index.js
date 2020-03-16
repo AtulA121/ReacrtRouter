@@ -8,7 +8,7 @@ import axios from "axios";
 //request interceptor
 axios.interceptors.request.use(request=>{
    //add logic here on the coming request
-   console.log(request.url);
+   console.log("intercept every request : ",request.url);
    return request;
 });
 
