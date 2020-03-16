@@ -10,8 +10,14 @@ import Home from "./Home";
 import About from "./About";
 import Contact from "./Contact";
 import Greet from "./components/grit";
+import socketIOClient from "socket.io-client";
 
 export default class App extends React.Component {
+
+  componentDidMount(){
+    // const socket = socketIOClient("http://localhost:3300/event?token=12");
+  }
+
   render(){
     return (
       <Router>
